@@ -1,0 +1,30 @@
+{
+  "name": "turf-union",
+  "version": "0.0.0",
+  "description": "find the union of geographic features",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Turfjs/turf-union.git"
+  },
+  "keywords": [
+    "turf",
+    "gif"
+  ],
+  "author": "Morgan Herlocker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Turfjs/turf-union/issues"
+  },
+  "homepage": "https://github.com/Turfjs/turf-union",
+  "devDependencies": {
+    "glob": "~4.0.0",
+    "tape": "~2.13.1"
+  },
+  "dependencies": {
+    "jsts": "~0.13.4"
+  }
+}
