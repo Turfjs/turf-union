@@ -1,23 +1,36 @@
-# turf-union [![build status][travis-badge]][travis-badge-url]
+turf-union
+===
+[![build status](https://secure.travis-ci.org/Turfjs/turf-union.png)](http://travis-ci.org/Turfjs/turf-union)
 
-Find the union of geographic features.
+Combines to polygons into one.
 
-## Usage
+###Install
 
-```js
-var union = require('turf-union');
-var result = union(polyA, polyB);
-
-/*
-{
-  type: 'Feature',
-  geometry: union geometry,
-  properties: properties from polyA
-}
-*/
+```sh
+npm install turf-union
 ```
 
-Where `polyA` and `polyB` are GeoJson Feature objects, with valid geometry.
+###Parameters
 
-[travis-badge]: https://secure.travis-ci.org/Turfjs/turf-union.svg
-[travis-badge-url]: http://travis-ci.org/Turfjs/turf-union
+name|description
+---|---
+polygon1|subject polygon
+polygon2|polygon to add
+
+###Usage
+
+```js
+union(polygon1, polygon2)
+```
+
+###Example
+
+```js
+var union = require('turf-union')
+var fs = require('fs')
+
+var poly1 = JSON.parse(fs.readFileSync('/path/to/file1.geojson'))
+var poly2 = JSON.parse(fs.readFileSync('/path/to/file2.geojson'))
+
+var unioned = union(poly1, poly2)
+```
