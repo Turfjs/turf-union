@@ -2,7 +2,7 @@ turf-union
 ===
 [![build status](https://secure.travis-ci.org/Turfjs/turf-union.png)](http://travis-ci.org/Turfjs/turf-union)
 
-Combines to polygons into one.
+Combines two polygons into one.
 
 ###Install
 
