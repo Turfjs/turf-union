@@ -1,7 +1,7 @@
 var union = require('../'),
   test = require('tape'),
   glob = require('glob'),
-  fs = require('fs')
+  fs = require('fs');
 
 var REGEN = false;
 
@@ -13,5 +13,4 @@ test('union', function(t){
       t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
   });
   t.end();
-})
-
+});

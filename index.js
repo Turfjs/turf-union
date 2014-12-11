@@ -3,19 +3,19 @@
 
 // depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
 
-var jsts = require('jsts')
+var jsts = require('jsts');
 
 module.exports = function(poly1, poly2){
-  var reader = new jsts.io.GeoJSONReader()
-  var a = reader.read(JSON.stringify(poly1.geometry))
-  var b = reader.read(JSON.stringify(poly2.geometry))
+  var reader = new jsts.io.GeoJSONReader();
+  var a = reader.read(JSON.stringify(poly1.geometry));
+  var b = reader.read(JSON.stringify(poly2.geometry));
   var union = a.union(b);
-  var parser = new jsts.io.GeoJSONParser()
+  var parser = new jsts.io.GeoJSONParser();
 
-  union = parser.write(union)
+  union = parser.write(union);
   return {
     type: 'Feature',
     geometry: union,
     properties: poly1.properties
-  }
+  };
 }

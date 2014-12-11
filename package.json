@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Turfjs/turf-union",
   "devDependencies": {
+    "benchmark": "^1.0.0",
     "glob": "~4.0.0",
     "tape": "~2.13.1"
   },
