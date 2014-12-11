@@ -22,10 +22,10 @@
   "homepage": "https://github.com/Turfjs/turf-union",
   "devDependencies": {
     "benchmark": "^1.0.0",
-    "glob": "~4.0.0",
-    "tape": "~2.13.1"
+    "glob": "~4.3.1",
+    "tape": "~3.0.3"
   },
   "dependencies": {
-    "jsts": "~0.13.4"
+    "jsts": "~0.15.0"
   }
 }
