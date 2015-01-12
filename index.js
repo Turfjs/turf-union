@@ -5,6 +5,24 @@
 
 var jsts = require('jsts');
 
+/**
+ * Combines two polygons into one
+ *
+ * @module turf/union
+ * @param {Polygon} a
+ * @param {Polygon} b
+ * @return {Polygon} combined polygon
+ * @example
+ * var a = turf.polygon([[[10,0],[20,10],[20,0],[10,0]]]);
+ * a.properties.fill = '#0f0';
+ * var b = turf.polygon([[[10+5,0+5],[20+5,10+5],
+ *   [20+5,0+5],[10+5,0+5]]]);
+ * b.properties.fill = '#00f';
+ * var union = turf.union(a, b);
+ * //=a
+ * //=b
+ * //=union
+ */
 module.exports = function(poly1, poly2){
   var reader = new jsts.io.GeoJSONReader();
   var a = reader.read(JSON.stringify(poly1.geometry));
