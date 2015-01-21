@@ -13,14 +13,28 @@ var jsts = require('jsts');
  * @param {Polygon} poly2 another input Polygon
  * @return {Polygon} a combined Polygon
  * @example
- * var a = turf.polygon([[[10,0],[20,10],[20,0],[10,0]]]);
- * a.properties.fill = '#0f0';
- * var b = turf.polygon([[[10+5,0+5],[20+5,10+5],
- *   [20+5,0+5],[10+5,0+5]]]);
- * b.properties.fill = '#00f';
- * var union = turf.union(a, b);
- * //=a
- * //=b
+ * var poly1 = turf.polygon([[
+ *  [-82.574787, 35.594087],
+ *  [-82.574787, 35.615581],
+ *  [-82.545261, 35.615581],
+ *  [-82.545261, 35.594087],
+ *  [-82.574787, 35.594087]
+ * ]]);
+ * poly1.properties.fill = '#0f0';
+ * var poly2 = turf.polygon([[
+ *  [-82.560024, 35.585153],
+ *  [-82.560024, 35.602602],
+ *  [-82.52964, 35.602602],
+ *  [-82.52964, 35.585153],
+ *  [-82.560024, 35.585153]
+ * ]]);
+ * poly2.properties.fill = '#00f';
+ * var polyFC = turf.featurecollection([poly1, poly2]);
+ *
+ * var union = turf.union(poly1, poly2);
+ *
+ * //=polyFC
+ *
  * //=union
  */
 module.exports = function(poly1, poly2){
