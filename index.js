@@ -9,9 +9,9 @@ var jsts = require('jsts');
  * Takes two polygons and combines them into one polgyon.
  *
  * @module turf/union
- * @param {Polygon} a
- * @param {Polygon} b
- * @return {Polygon} combined polygon
+ * @param {Polygon} poly1 an input Polygon
+ * @param {Polygon} poly2 another input Polygon
+ * @return {Polygon} a combined Polygon
  * @example
  * var a = turf.polygon([[[10,0],[20,10],[20,0],[10,0]]]);
  * a.properties.fill = '#0f0';
