@@ -6,7 +6,7 @@
 var jsts = require('jsts');
 
 /**
- * Takes two polygons and combines them into one polgyon.
+ * Takes two {@link Polygon} features and returnes a combined {@link Polygon} feature.
  *
  * @module turf/union
  * @param {Polygon} poly1 an input Polygon
