@@ -6,7 +6,7 @@ var union = require('../'),
 var REGEN = false;
 
 test('union', function(t){
-  glob.sync(__dirname + '/fixtures/in/*.json').forEach(function(input) {
+  glob.sync(__dirname + '/fixtures/in/*.geojson').forEach(function(input) {
       var fcs = JSON.parse(fs.readFileSync(input));
       var output = union(fcs[0].features[0], fcs[1].features[0]);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
