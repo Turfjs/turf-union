@@ -6,12 +6,12 @@
 var jsts = require('jsts');
 
 /**
- * Takes two {@link Polygon} features and returnes a combined {@link Polygon} feature.
+ * Takes two {@link Polygon} features and returnes a combined {@link Polygon} feature. If the input Polygon features are not contiguous, this function returns a {@link MultiPolygon} feature.
  *
  * @module turf/union
  * @param {Polygon} poly1 an input Polygon
  * @param {Polygon} poly2 another input Polygon
- * @return {Polygon} a combined Polygon
+ * @return {Feature} a combined {@link Polygon} or {@link MultiPolygon} feature
  * @example
  * var poly1 = turf.polygon([[
  *  [-82.574787, 35.594087],
