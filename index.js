@@ -9,6 +9,7 @@ var jsts = require('jsts');
  * Takes two {@link Polygon} features and returnes a combined {@link Polygon} feature. If the input Polygon features are not contiguous, this function returns a {@link MultiPolygon} feature.
  *
  * @module turf/union
+ * @category transformation
  * @param {Polygon} poly1 an input Polygon
  * @param {Polygon} poly2 another input Polygon
  * @return {Feature} a combined {@link Polygon} or {@link MultiPolygon} feature
