@@ -63,8 +63,13 @@ module.exports = function (poly1, poly2) {
     "geometry": {}
   }
   if (gh.utils.isMultiPolygon(u)) {
-    feature.geometry.type = "MultiPolygon";
-    feature.geometry.coordinates = u;
+    if (u.length > 1) {
+      feature.geometry.type = "MultiPolygon";
+      feature.geometry.coordinates = u;
+    } else {
+      feature.geometry.type = "Polygon";
+      feature.geometry.coordinates = u[0];
+    }
   } else if (gh.utils.isPolygon(u)) {
     feature.geometry.type = "Polygon";
     feature.geometry.coordinates = u;
