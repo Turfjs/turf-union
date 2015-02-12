@@ -4,6 +4,7 @@
 // depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
 
 var jsts = require('jsts');
+var gh = require('greiner-hormann');
 
 /**
  * Takes two {@link Polygon} features and returnes a combined {@link Polygon} feature. If the input Polygon features are not contiguous, this function returns a {@link MultiPolygon} feature.
@@ -57,17 +58,23 @@ var jsts = require('jsts');
  *
  * //=union
  */
-module.exports = function(poly1, poly2){
-  var reader = new jsts.io.GeoJSONReader();
-  var a = reader.read(JSON.stringify(poly1.geometry));
-  var b = reader.read(JSON.stringify(poly2.geometry));
-  var union = a.union(b);
-  var parser = new jsts.io.GeoJSONParser();
+module.exports = function (poly1, poly2) {
+  var a = poly1.geometry.coordinates;
+  var b = poly2.geometry.coordinates;
+  var u = gh.union(a, b);
 
-  union = parser.write(union);
-  return {
-    type: 'Feature',
-    geometry: union,
-    properties: poly1.properties
-  };
+  var feature = {
+    "type": "Feature",
+    "properties": poly1.properties,
+    "geometry": {}
+  }
+  if (gh.utils.isMultiPolygon(u)) {
+    feature.geometry.type = "MultiPolygon";
+    feature.geometry.coordinates = u;
+  } else if (gh.utils.isPolygon(u)) {
+    feature.geometry.type = "Polygon";
+    feature.geometry.coordinates = u;
+  }
+
+  return feature;
 }

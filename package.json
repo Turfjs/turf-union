@@ -29,6 +29,7 @@
     "doxme": "^1.4.3"
   },
   "dependencies": {
-    "jsts": "~0.15.0"
+    "jsts": "~0.15.0",
+    "greiner-hormann": "tchannel/greiner-hormann"
   }
 }
