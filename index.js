@@ -57,7 +57,7 @@ var jsts = require('jsts');
  *
  * //=union
  */
-module.exports = function(poly1, poly2){
+module.exports = function(poly1, poly2) {
   var reader = new jsts.io.GeoJSONReader();
   var a = reader.read(JSON.stringify(poly1.geometry));
   var b = reader.read(JSON.stringify(poly2.geometry));
@@ -70,4 +70,4 @@ module.exports = function(poly1, poly2){
     geometry: union,
     properties: poly1.properties
   };
-}
+};
