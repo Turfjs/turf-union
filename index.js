@@ -1,9 +1,4 @@
-// look here for help http://svn.osgeo.org/grass/grass/branches/releasebranch_6_4/vector/v.overlay/main.c
-//must be array of polygons
-
-// depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
-
-var jsts = require('jsts');
+var gh = require('gh-clipping-algorithm');
 
 /**
  * Takes two {@link Polygon|polygons} and returns a combined polygon. If the input polygons are not contiguous, this function returns a {@link MultiPolygon} feature.
@@ -58,16 +53,37 @@ var jsts = require('jsts');
  * //=union
  */
 module.exports = function(poly1, poly2) {
-  var reader = new jsts.io.GeoJSONReader();
-  var a = reader.read(JSON.stringify(poly1.geometry));
-  var b = reader.read(JSON.stringify(poly2.geometry));
-  var union = a.union(b);
-  var parser = new jsts.io.GeoJSONParser();
+  // console.log(poly1);
+  var a = poly1.coordinates ? poly1.coordinates : poly1.geometry.coordinates;
+  var b = poly2.coordinates ? poly2.coordinates : poly2.geometry.coordinates;
+  var u = gh.union(a, b);
 
-  union = parser.write(union);
-  return {
-    type: 'Feature',
-    geometry: union,
-    properties: poly1.properties
+  var feature = {
+    "type": "Feature",
+    "properties": {},
+    "geometry": {}
   };
+
+  if (!u || u.length == 0) {
+    return undefined;
+  }
+
+  if (gh.utils.isMultiPolygon(u)) {
+    if (u.length > 1) {
+      feature.geometry.type = "MultiPolygon";
+      feature.geometry.coordinates = u;
+    } else {
+      feature.geometry.type = "Polygon";
+      feature.geometry.coordinates = u[0];
+    }
+  } else if (gh.utils.isPolygon(u)) {
+    feature.geometry.type = "Polygon";
+    feature.geometry.coordinates = u;
+  }
+
+  if (poly1.properties) {
+    feature.properties = poly1.properties;
+  }
+
+  return feature;
 };
