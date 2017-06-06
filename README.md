@@ -1,3 +1,4 @@
+# DEPRECATED - replaced with [`@turf/union`](https://github.com/Turfjs/turf/tree/master/packages/turf-union)
 # turf-union
 
 [![build status](https://secure.travis-ci.org/Turfjs/turf-union.png)](http://travis-ci.org/Turfjs/turf-union)
